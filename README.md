@@ -156,14 +156,6 @@ python diabetes_prediction.py
 
 ---
 
-## 🔮 Future Enhancements
-
-* Add a **web interface** using Streamlit or Flask
-* Deploy on **Render / HuggingFace / GitHub Pages**
-* Add interactive visualizations
-* Hyperparameter tuning for improved accuracy
-
----
 
 ## 🤝 Contributing
 
@@ -176,12 +168,3 @@ Pull requests are welcome! If you’d like to improve the model or add features,
 **Author:** Mukta Lad
 For suggestions or improvements, feel free to reach out.
 
----
-
-If you want, I can also generate:
-✔ `requirements.txt`
-✔ Project logo for GitHub
-✔ A nice project banner
-✔ A Streamlit UI for this ML model
-
-Just tell me!
