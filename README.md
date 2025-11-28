@@ -1,5 +1,4 @@
-Sure Mukta! Here is a **complete, polished, professional README.md** for your **Diabetes Prediction ML Project**—based on the code and workflow you had created earlier.
-You can *copy–paste directly* into your GitHub.
+
 
 ---
 
