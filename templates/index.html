@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Auto-disappearing alert styles */
+        #prediction-alert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50; /* green for diabetic/not diabetic success */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Enter Patient Details</h2>
+    <form method="post" action="/predict">
+
+        <label>Number of Pregnancies:</label><br>
+        <input type="text" name="num_preg" placeholder="e.g., 2" value="{{ form_data.num_preg if form_data else '' }}"><br>
+
+        <label>Glucose Concentration:</label><br>
+        <input type="text" name="glucose_conc" placeholder="e.g., 120" value="{{ form_data.glucose_conc if form_data else '' }}"><br>
+
+        <label>Diastolic Blood Pressure:</label><br>
+        <input type="text" name="diastolic_bp" placeholder="e.g., 70" value="{{ form_data.diastolic_bp if form_data else '' }}"><br>
+
+        <label>Insulin:</label><br>
+        <input type="text" name="insulin" placeholder="e.g., 94" value="{{ form_data.insulin if form_data else '' }}"><br>
+
+        <label>BMI:</label><br>
+        <input type="text" name="bmi" placeholder="e.g., 30.5" value="{{ form_data.bmi if form_data else '' }}"><br>
+
+        <label>Diabetes Pedigree Function:</label><br>
+        <input type="text" name="diab_pred" placeholder="e.g., 0.372" value="{{ form_data.diab_pred if form_data else '' }}"><br>
+
+        <label>Age:</label><br>
+        <input type="text" name="age" placeholder="e.g., 33" value="{{ form_data.age if form_data else '' }}"><br>
+
+        <label>Skin Thickness:</label><br>
+        <input type="text" name="skin" placeholder="e.g., 20" value="{{ form_data.skin if form_data else '' }}"><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <!-- Auto-disappearing alert -->
+    <div id="prediction-alert"></div>
+
+    {% if prediction_text %}
+    <script>
+        const alertBox = document.getElementById('prediction-alert');
+        alertBox.innerText = "{{ prediction_text }}";
+        alertBox.style.display = 'block';
+
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+            alertBox.style.display = 'none';
+        }, 3000);
+    </script>
+    {% endif %}
+</body>
+</html>
